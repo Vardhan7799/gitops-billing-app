@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: billingapp-container
-          image: billingsoftware:1.0.0-7
+          image: rajyavardhan36/billingsoftware:1.0.0-7
           env:
             - name: db.host
               valueFrom:
