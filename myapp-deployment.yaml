@@ -59,7 +59,7 @@ spec:
                   name: kube-secret
                   key: RAZORPAY_KEY_SECRET
           ports:
-            - containerPort: 8080 # port on which container runs in cluster.
+            - containerPort: 8022 # port on which container runs in cluster.
 
 ---
 apiVersion: v1
@@ -71,4 +71,4 @@ spec:
     app: billingapp #linked to pod by matching the labels
   ports:
     - port: 80
-    - targetPort: 8080 #Links the service to the pod
+    - targetPort: 8022 #Links the service to the pod
