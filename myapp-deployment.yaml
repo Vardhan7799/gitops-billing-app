@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: billingapp-container
-          image: rajyavardhan36/billingsoftware:1.0.0-9
+          image: rajyavardhan36/billingsoftware:1.0.0-10
           env:
             - name: db.host
               valueFrom:
@@ -38,26 +38,31 @@ spec:
                 secretKeyRef:
                   name: kube-secret
                   key: DB_PASSWORD
-            - name: aws.access.key1
+            - name: AWS_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
                   name: awssm-secret
                   key: access-key
-            - name: aws.secret.key1
+            - name: AWS_SECRET_KEY
               valueFrom:
                 secretKeyRef:
                   name: awssm-secret
                   key: secret-access-key
-            - name: razorpay.key.id1
+            - name: RAZORPAY_KEY_ID
               valueFrom:
                 secretKeyRef:
                   name: kube-secret
                   key: RAZORPAY_KEY_ID
-            - name: razorpay.key.secret1
+            - name: RAZORPAY_KEY_SECRET
               valueFrom:
                 secretKeyRef:
                   name: kube-secret
                   key: RAZORPAY_KEY_SECRET
+            - name: JWT_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: kube-secret
+                  key: JWT_SECRET_KEY
           ports:
             - containerPort: 8080 # port on which container runs in cluster.
 
