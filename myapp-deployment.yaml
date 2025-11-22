@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: billingapp-container
-          image: rajyavardhan36/billingsoftware:1.0.0-8
+          image: rajyavardhan36/billingsoftware:1.0.0-9
           env:
             - name: db.host
               valueFrom:
@@ -38,28 +38,28 @@ spec:
                 secretKeyRef:
                   name: kube-secret
                   key: DB_PASSWORD
-            - name: aws.access.key
+            - name: aws.access.key1
               valueFrom:
                 secretKeyRef:
                   name: awssm-secret
                   key: access-key
-            - name: aws.secret.key
+            - name: aws.secret.key1
               valueFrom:
                 secretKeyRef:
                   name: awssm-secret
                   key: secret-access-key
-            - name: razorpay.key.id
+            - name: razorpay.key.id1
               valueFrom:
                 secretKeyRef:
                   name: kube-secret
                   key: RAZORPAY_KEY_ID
-            - name: razorpay.key.secret
+            - name: razorpay.key.secret1
               valueFrom:
                 secretKeyRef:
                   name: kube-secret
                   key: RAZORPAY_KEY_SECRET
           ports:
-            - containerPort: 8022 # port on which container runs in cluster.
+            - containerPort: 8080 # port on which container runs in cluster.
 
 ---
 apiVersion: v1
@@ -71,4 +71,4 @@ spec:
     app: billingapp #linked to pod by matching the labels
   ports:
     - port: 80
-    - targetPort: 8022 #Links the service to the pod
+    - targetPort: 8080 #Links the service to the pod
