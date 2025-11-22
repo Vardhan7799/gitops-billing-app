@@ -3,5 +3,4 @@ kind: ConfigMap
 metadata:
   name: app-configmap
 data:
-  db_host: mysql
-  db_name: salesDB
+  db_name: billing_app

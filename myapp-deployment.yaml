@@ -14,15 +14,15 @@ spec:
     spec:
       containers:
         - name: billingapp-container
-          image: billingapp:1.0
+          image: billingsoftware:1.0.0-7
           env:
             - name: db.host
               valueFrom:
-                configMapKeyRef:
-                  name: app-configmap
-                  key: db_host
+                secretKeyRef:
+                  name: kube-secret
+                  key: DB_HOST
             - name: db.port
-              value: "3310"
+              value: "3309"
             - name: db.name
               valueFrom:
                 configMapKeyRef:
@@ -31,33 +31,33 @@ spec:
             - name: db.username
               valueFrom:
                 secretKeyRef:
-                  name: app-secrets
-                  key: db_username
+                  name: kube-secret
+                  key: DB_USERNAME
             - name: db.password
               valueFrom:
                 secretKeyRef:
-                  name: app-secrets
-                  key: db_password
+                  name: kube-secret
+                  key: DB_PASSWORD
             - name: aws.access.key
               valueFrom:
                 secretKeyRef:
-                  name: app-secrets
-                  key: aws_access_key
+                  name: awssm-secret
+                  key: access-key
             - name: aws.secret.key
               valueFrom:
                 secretKeyRef:
-                  name: app-secrets
-                  key: aws_secret_key
+                  name: awssm-secret
+                  key: secret-access-key
             - name: razorpay.key.id
               valueFrom:
                 secretKeyRef:
-                  name: app-secrets
-                  key: razorpay_key_id
+                  name: kube-secret
+                  key: RAZORPAY_KEY_ID
             - name: razorpay.key.secret
               valueFrom:
                 secretKeyRef:
-                  name: app-secrets
-                  key: razorpay_key_secret
+                  name: kube-secret
+                  key: RAZORPAY_KEY_SECRET
           ports:
             - containerPort: 8080 # port on which container runs in cluster.
 
